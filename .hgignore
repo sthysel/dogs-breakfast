@@ -1,0 +1,8 @@
+.pyc
+.coverage
+MANIFEST$
+build/
+dist/
+test/_cover/
+docs/_build/
+
