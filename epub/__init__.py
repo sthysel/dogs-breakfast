@@ -273,7 +273,7 @@ class EpubFile(zipfile.ZipFile):
         path = item
         if hasattr(item, 'href'):
             path = item.href
-        return self.read(os.path.join(self.content_path, path))
+        return self.read(os.path.join(self.content_path, path).replace('\\', '/'))
 
 
 class Book(object):
