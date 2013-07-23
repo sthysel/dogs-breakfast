@@ -13,6 +13,8 @@ __all__ = ['opf', 'ncx', 'utils']
 
 
 import os
+import shutil
+import tempfile
 import uuid
 import warnings
 import zipfile
@@ -154,12 +156,31 @@ class EpubFile(zipfile.ZipFile):
             self._write_close()
         zipfile.ZipFile.close(self)
 
+    def delete(self, *paths):
+        """
+        Remove files from the archive
+        Warning: This will be slow, it needs to recreate from scratch the complete archive
+        """
+        with tempfile.NamedTemporaryFile('rb', delete=False) as temp:
+            with zipfile.ZipFile(temp.name, 'w') as new_zip:
+                for item in self.infolist():
+                    if item.filename not in paths:
+                        new_zip.writestr(item, self.read(item.filename))
+            zipfile.ZipFile.close(self)
+            shutil.move(temp.name, self.filename)
+            zipfile.ZipFile.__init__(self, self.filename, self.mode)
+
     def _write_close(self):
         """
         Handle writes when closing epub. Both new file mode (w) and append
         file mode (a), some files must be generated: container, OPF, and NCX.
 
         """
+        item_toc = self.get_item(self.opf.spine.toc)
+
+        # Remove the old files
+        self.delete('META-INF/container.xml', self.opf_path, os.path.join(self.content_path, getattr(item_toc, 'href', None)))
+
         # Write META-INF/container.xml
         self.writestr('META-INF/container.xml',
                       self._build_container().encode('utf-8'))
@@ -167,7 +188,6 @@ class EpubFile(zipfile.ZipFile):
         self.writestr(self.opf_path,
                       self.opf.as_xml_document().toxml().encode('utf-8'))
         # Write NCX File if exist
-        item_toc = self.get_item(self.opf.spine.toc)
         if item_toc:
             self.writestr(os.path.join(self.content_path, item_toc.href),
                           self.toc.as_xml_document().toxml().encode('utf-8'))
