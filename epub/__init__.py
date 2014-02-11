@@ -179,7 +179,10 @@ class EpubFile(zipfile.ZipFile):
         item_toc = self.get_item(self.opf.spine.toc)
 
         # Remove the old files
-        self.delete('META-INF/container.xml', self.opf_path, os.path.join(self.content_path, getattr(item_toc, 'href', None)))
+        to_remove = ['META-INF/container.xml', self.opf_path]
+        if item_toc:
+            to_remove.append(os.path.join(self.content_path, item_toc.href))
+        self.delete(*to_remove)
 
         # Write META-INF/container.xml
         self.writestr('META-INF/container.xml',
