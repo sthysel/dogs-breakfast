@@ -47,7 +47,10 @@ def parse_opf(xml_string):
             'guide': None}
     elements = [e for e in package.childNodes if e.nodeType == e.ELEMENT_NODE]
     for node in elements:
-        data[node.tagName.lower()] = node
+        tag = node.tagName.lower()
+        if tag.startswith('opf:'):
+            tag = tag[4:]
+        data[tag] = node
 
     # Inspect metadata
     metadata = _parse_xml_metadata(data['metadata'])
