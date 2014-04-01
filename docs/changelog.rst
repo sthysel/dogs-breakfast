@@ -1,11 +1,30 @@
+=========
 Changelog
 =========
 
 .. toctree::
    :maxdepth: 2
 
+Version 0.5.2
+=============
+
+.. note::
+
+   La fonctionnalité d'écriture d'un fichier Epub reste complexe à maîtriser
+   et doit être considérée comme étant encore un mode "beta".
+
+* Correction d'un bug où certains fichiers de base étaient dupliqués (par
+  exemple le fichier mimetype).
+* Correction d'un bug sous Windows concernant les chemins d'accès. Il est
+  possible que d'autres usages d'os.path rendent la bibliothèque
+  incompatible avec Windows (c'est un point qui sera amélioré dans une
+  prochaine version).
+* Correction d'un bug permettant de lire des epubs utilisant (probablement à
+  tort) le namespace "opf" dans sa description des méta-données.
+
+
 Version 0.5.1
--------------
+=============
 
 * Il est désormais possible d'ouvrir un fichier epub qui ne contient pas
   de fichier NCX. Un warning est levé lorsqu'un tel fichier epub est ouvert.
@@ -14,7 +33,7 @@ Version 0.5.1
 
 
 Version 0.5.0
--------------
+=============
 
 De nouvelles amélioration, et quelques modifications :
 
@@ -49,7 +68,7 @@ La fonction `epub.open()` est dépréciée et émet un warning. Il faut utiliser
 la fonction :func:`epub.open_epub` à la place.
 
 Bug fix
-.......
+-------
 
 Les bugs suivants ont été résolus :
 
@@ -67,7 +86,7 @@ Les bugs suivants ont été résolus :
 
 
 Version 0.4.0
--------------
+=============
 
 Cette nouvelle version propose plusieurs petites améliorations, ainsi qu'une
 nouvelle fonctionnalité majeure : le mode écriture.
