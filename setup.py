@@ -7,7 +7,7 @@ with open("README.txt") as f:
 
 
 setup(name='epub',
-      version='0.5.0',
+      version='0.5.2',
       description='Library to open and read files in the epub version 2.',
       long_description=long_description,
       author='Florian Strzelecki',
