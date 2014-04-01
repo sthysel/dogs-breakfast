@@ -2,7 +2,7 @@
 Python Epub
 ===========
 
-This directory contains the 0.5.1 version of epub python library.
+This directory contains the 0.5.2 version of epub python library.
 
 Python Epub is free software. See the file LICENSE.txt for copying conditions.
 
@@ -29,7 +29,7 @@ Documentation
 
 This library is documented with Sphinx, and all files can be found into "docs".
 
-The documentation for version 0.5.1 is readable online at http://epub.exirel.me
+The documentation for version 0.5.2 is readable online at http://epub.exirel.me
 and can be downloaded from bitbucket.
 
 The documentation for development version will be available
