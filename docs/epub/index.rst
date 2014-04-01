@@ -329,3 +329,8 @@ La classe Book
    Cette classe permet de simplifier l'accès en lecture à un fichier epub.
    Un objet Book sert de proxy à l'objet plus complexe EpubFile, par un
    ensemble de `@property` adaptées.
+
+.. note::
+
+   Cette classe n'est pas encore prête à être employée en production. À
+   utiliser avec précaution.
