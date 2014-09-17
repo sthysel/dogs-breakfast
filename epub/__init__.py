@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 
 __author__ = 'Florian Strzelecki <florian.strzelecki@gmail.com>'
-__version__ = '0.5.2'
+__version__ = '0.5.3'
 __all__ = ['opf', 'ncx', 'utils']
 
 
@@ -15,10 +15,9 @@ import uuid
 import warnings
 import zipfile
 
-
 from xml.dom import minidom
 
-from epub import ncx, opf, utils
+from . import ncx, opf, utils
 
 
 MIMETYPE_EPUB = 'application/epub+zip'
