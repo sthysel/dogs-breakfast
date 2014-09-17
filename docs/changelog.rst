@@ -5,6 +5,22 @@ Changelog
 .. toctree::
    :maxdepth: 2
 
+Version 0.5.3
+=============
+
+* Correction de fautes dans la documentation
+
+Bug fix
+-------
+
+Les bugs suivants ont été résolus :
+
+* `Issue #6`__: *Any reason for not using relative imports?*.
+  Aucune bonne raison. Le projet commence à être ancien, et les erreurs de
+  débutant sont probablement encore trop nombreuses.
+
+.. __: https://bitbucket.org/exirel/epub/issue/6/any-reason-for-not-using-relative-imports
+
 Version 0.5.2
 =============
 
@@ -58,10 +74,10 @@ De nouvelles amélioration, et quelques modifications :
   dépréciée. Il vaut mieux utiliser :func:`epub.open_epub` à la place, qui
   prend les mêmes paramètres, mais évite tout potentiel conflit avec la
   fonction python `open()`.
-* Ajout d'une note sur la version et la compatibilité avec les versions de 
+* Ajout d'une note sur la version et la compatibilité avec les versions de
   Python dans la documentation.
 
-Il n'est plus possible d'utiliser la méthode `epub.EpubFile.read` avec un 
+Il n'est plus possible d'utiliser la méthode `epub.EpubFile.read` avec un
 :class:`~epub.opf.ManifestItem` directement.
 
 La fonction `epub.open()` est dépréciée et émet un warning. Il faut utiliser
@@ -103,7 +119,7 @@ supporter Python 2.6 dans une prochaine version.
 * La méthode :meth:`epub.EpubFile.read` devient :meth:`epub.EpubFile.read_item`.
   Cette méthode possède le même fonctionnement que l'ancienne, qui reprend sa
   fonctionnalité native de la classe `zipfile.ZipFile`.
-* La classe :class:`epub.opf.Manifest` étend la classe 
+* La classe :class:`epub.opf.Manifest` étend la classe
   :class:`collection.OrderedDict` et plus la type `dict`. Ce changement n'est
   pas compatible avec une autre version que Python 2.7, mais un backport sera
   proposé prochainement.

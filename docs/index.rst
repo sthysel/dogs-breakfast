@@ -1,3 +1,4 @@
+===========
 Python-Epub
 ===========
 
@@ -11,32 +12,32 @@ Python-Epub
    changelog
 
 Introduction
-------------
+============
 
-Connaissez-vous le format de livre numérique appelé "Epub" ? Il s'agit d'un 
+Connaissez-vous le format de livre numérique appelé "Epub" ? Il s'agit d'un
 format ouvert, proposé par l'`IDPF`_, qui le présente ainsi :
 
-  EPUB is the distribution and interchange format standard for digital 
-  publications and documents based on Web Standards. EPUB defines a means of 
-  representing, packaging and encoding structured and semantically enhanced 
-  Web content — including XHTML, CSS, SVG, images, and other resources — for 
+  EPUB is the distribution and interchange format standard for digital
+  publications and documents based on Web Standards. EPUB defines a means of
+  representing, packaging and encoding structured and semantically enhanced
+  Web content — including XHTML, CSS, SVG, images, and other resources — for
   distribution in a single-file format.
-  
-  EPUB allows publishers to produce and send a single digital publication 
-  file through distribution and offers consumers interoperability between 
-  software/hardware for unencrypted reflowable digital books and other 
+
+  EPUB allows publishers to produce and send a single digital publication
+  file through distribution and offers consumers interoperability between
+  software/hardware for unencrypted reflowable digital books and other
   publications.
 
-En d'autre terme : c'est un format qui permet de rassembler dans un seul 
-fichier un ensemble de fichiers de type "html&css", pour publier du contenu - 
+En d'autre terme : c'est un format qui permet de rassembler dans un seul
+fichier un ensemble de fichiers de type "html&css", pour publier du contenu -
 du genre, un livre numérique.
 
-Dans le monde python, si vous cherchez bien, vous trouverez des solutions tout 
+Dans le monde python, si vous cherchez bien, vous trouverez des solutions tout
 à fait pertinentes d'applications pour lire et éditer des fichiers epub.
 
-Cependant, il s'agit beaucoup de solutions spécifiques (et en outre, très peu 
-de bibliothèques), d'où l'existence de cette bibliothèque qui permet d'ouvrir 
-(en lecture seule pour le moment) des fichiers au format epub (dans la version 
+Cependant, il s'agit beaucoup de solutions spécifiques (et en outre, très peu
+de bibliothèques), d'où l'existence de cette bibliothèque qui permet d'ouvrir
+(en lecture seule pour le moment) des fichiers au format epub (dans la version
 2 de la spécification, pour le moment).
 
 Voir aussi : le site l'`IDPF`_ et la `spécification Epub 2`_.
@@ -61,14 +62,14 @@ Voir aussi : le site l'`IDPF`_ et la `spécification Epub 2`_.
    Les bonnes volontés et les remarques sont **toutes** bonnes à prendre.
 
 Licence
--------
+=======
 
 La licence choisie pour cette bibliothèque est la LGPL_.
 
 .. _LGPL: http://www.gnu.org/licenses/lgpl.html
 
 Installation
-------------
+============
 
 Disponible sur pypi, vous pouvez installer Python Epub via la commande "pip" :
 
@@ -85,7 +86,7 @@ Sinon, vous pouvez obtenir la dernière version des sources via mercurial :
   python setup.py install
 
 Version et compatibilité
-------------------------
+========================
 
 Le module :mod:`epub` est disponible en version stable *0.5.0* depuis le
 *14 Octobre 2012*.
@@ -100,7 +101,7 @@ Cette version **n'est pas compatible** avec des versions de Python antérieures
 à la version 2.6.
 
 Utilisation
------------
+===========
 
 Le cas d'utilisation le plus simple est représenté par le code suivant :
 
@@ -114,13 +115,13 @@ Le cas d'utilisation le plus simple est représenté par le code suivant :
        # read the content
        data = book.read_item(item)
 
-Bien entendu, ce n'est qu'un exemple, très incomplet qui plus est, de ce que 
+Bien entendu, ce n'est qu'un exemple, très incomplet qui plus est, de ce que
 vous pouvez faire.
 
-Cette bibliothèque ayant pour ambition de suivre les spécifications du format 
+Cette bibliothèque ayant pour ambition de suivre les spécifications du format
 epub, certains éléments pourront paraître obscurs.
 
-Rassurez-vous, cette documentation est là pour vous apporter le plus possible 
+Rassurez-vous, cette documentation est là pour vous apporter le plus possible
 de réponses à vos interrogations.
 
 

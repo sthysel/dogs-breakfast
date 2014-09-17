@@ -1,3 +1,4 @@
+==============
 Le fichier OPF
 ==============
 
@@ -7,26 +8,26 @@ Le fichier OPF
    :maxdepth: 2
 
 Open Packaging Format
----------------------
+=====================
 
-Le format OPF (pour `Open Packaging Format`) spécifié par l'IDPF permet 
-d'indiquer au système de lecture quelle est la structure et le contenu d'un 
+Le format OPF (pour `Open Packaging Format`) spécifié par l'IDPF permet
+d'indiquer au système de lecture quelle est la structure et le contenu d'un
 fichier epub.
 
-Ses principaux composants sont ses meta-données et son élément ``<manifest>``, 
-ce dernier référençant les fichiers qui composent effectivement le livre 
+Ses principaux composants sont ses meta-données et son élément ``<manifest>``,
+ce dernier référençant les fichiers qui composent effectivement le livre
 numérique.
 
-Différents éléments annexes sont aussi présents : l'élément ``<spine>`` qui 
-donne un ordre de lecture linéaire, et l'élément ``<guide>`` qui référence les 
+Différents éléments annexes sont aussi présents : l'élément ``<spine>`` qui
+donne un ordre de lecture linéaire, et l'élément ``<guide>`` qui référence les
 différentes tables des matières, des illustrations, etc.
 
-La bibliothèque python-epub propose un module à part entière pour manipuler ce 
-format (dans sa version pour Epub 2.0), permettant une plus grande souplesse 
+La bibliothèque python-epub propose un module à part entière pour manipuler ce
+format (dans sa version pour Epub 2.0), permettant une plus grande souplesse
 dans son utilisation.
 
-Chaque élément du fichier OPF est représenté par une structure permettant 
-d'accéder à tous ses éléments, sans avoir à analyser le fichier xml soi-même. 
+Chaque élément du fichier OPF est représenté par une structure permettant
+d'accéder à tous ses éléments, sans avoir à analyser le fichier xml soi-même.
 Ces éléments sont tous renseignés dans les attributs de la classe :class:`Opf` :
 
 * :attr:`Opf.manifest` pour l'élément ``<manifest>``
@@ -35,39 +36,39 @@ Ces éléments sont tous renseignés dans les attributs de la classe :class:`Opf
 * :attr:`Opf.spine` pour l'élément ``<spine>``
 
 L'élément ``<manifest>``
-........................
+------------------------
 
-Cet élément référence la liste des fichiers du livre numérique : textes, 
-images, feuilles de style, couverture, etc. ainsi que les `fallback` des 
+Cet élément référence la liste des fichiers du livre numérique : textes,
+images, feuilles de style, couverture, etc. ainsi que les `fallback` des
 fichiers qui sortent de la spécification Epub (comme les fichiers PDF).
 
-Vous pouvez obtenir plus d'information directement dans la spécification epub à 
+Vous pouvez obtenir plus d'information directement dans la spécification epub à
 propos de `l'élément manifest`__.
 
 .. __: http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.3
 
-Il est représenté par la classe :class:`Manifest`, et chaque élément du 
-manifest est représenté par un objet de la classe :class:`ManifestItem`. En 
-outre, la classe :class:`Manifest` peut être utilisée exactement comme un 
+Il est représenté par la classe :class:`Manifest`, et chaque élément du
+manifest est représenté par un objet de la classe :class:`ManifestItem`. En
+outre, la classe :class:`Manifest` peut être utilisée exactement comme un
 ``dict`` ne pouvant contenir des objets de type ``ManifestItem``.
 
 Les métadonnées et l'élément ``<metadata>``
-...........................................
+-------------------------------------------
 
-Les méta-données d'un epub sont renseignés dans l'élément ``<metadata>`` du 
-fichier OPF. Pour les représenter, un objet de la classe :class:`Metadata` est 
+Les méta-données d'un epub sont renseignés dans l'élément ``<metadata>`` du
+fichier OPF. Pour les représenter, un objet de la classe :class:`Metadata` est
 employé.
 
-La description de chacune de ces meta-données est disponible dans la 
+La description de chacune de ces meta-données est disponible dans la
 `spécification Epub, section "Metadata"`__.
 
 .. __: http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2
 
-Comme la pluspart des meta-données peuvent être renseignées plusieurs fois, les 
-attributs de cette classe sont souvent des listes d'éléments (principalement 
+Comme la pluspart des meta-données peuvent être renseignées plusieurs fois, les
+attributs de cette classe sont souvent des listes d'éléments (principalement
 des tuples contenant à leur tour de simples chaînes de caractères).
 
-Par exemple, pour l'élément ``<title>`` qui peut se décliner en plusieurs 
+Par exemple, pour l'élément ``<title>`` qui peut se décliner en plusieurs
 langues, voici comment il est possible de l'exploiter :
 
 .. code-block:: python
@@ -76,14 +77,14 @@ langues, voici comment il est possible de l'exploiter :
    for title, lang in meta.titles:
        print 'Le titre en %s est "%s"' % (title, lang)
 
-Chaque attribut est décrit avec la forme de son contenu dans la documentation 
+Chaque attribut est décrit avec la forme de son contenu dans la documentation
 de la classe :class:`Metadata`.
 
 L'élément ``<guide>``
-.....................
+---------------------
 
-L'élément ``<guide>`` d'un fichier OPF représente une liste des tables et des 
-références du livre, pouvant indiquer la couverture, la table des contenus, des 
+L'élément ``<guide>`` d'un fichier OPF représente une liste des tables et des
+références du livre, pouvant indiquer la couverture, la table des contenus, des
 illustrations, etc.
 
 Voir aussi la `spécification epub OPF, section "guide"`__
@@ -93,48 +94,48 @@ Voir aussi la `spécification epub OPF, section "guide"`__
 Cet élément est représenté par la classe :class:`Guide`.
 
 L'élément ``<spine>``
-.....................
+---------------------
 
-L'élément ``<spine>`` propose une liste de fichiers dans un ordre de lecture 
+L'élément ``<spine>`` propose une liste de fichiers dans un ordre de lecture
 dit "linéaire", c'est à dire dans l'ordre de lecture logique.
 
-La `spécification epub OPF, section "spine"`__ donne plus d'information au 
+La `spécification epub OPF, section "spine"`__ donne plus d'information au
 sujet de cet élément.
 
 .. __: http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.4
 
-C'est aussi à partir de cet élément que l'on obtient l'identifiant du fichier 
+C'est aussi à partir de cet élément que l'on obtient l'identifiant du fichier
 de navigation NCX, qui permet de retrouver le fichier dans la liste du manifest.
 
 Cet élément est représenté par la classe :class:`Spine`.
 
 Manipuler le fichier OPF
-------------------------
+========================
 
-En connaissant la structure d'un fichier OPF, structure décrite dans la 
-spécification Epub pour le format OPF, il est plutôt simple d'exploiter les 
+En connaissant la structure d'un fichier OPF, structure décrite dans la
+spécification Epub pour le format OPF, il est plutôt simple d'exploiter les
 données proposées par la classe :class:`Opf`.
 
-Cependant, lire une spécification entière n'est pas forcément nécessaire... 
-passons à des explications concrètes : comment manipuler un fichier OPF avec 
+Cependant, lire une spécification entière n'est pas forcément nécessaire...
+passons à des explications concrètes : comment manipuler un fichier OPF avec
 le module :mod:`epub.opf` ?
 
 Ouvrir et analyser un fichier OPF
-.................................
+---------------------------------
 
-Le plus simple est d'utiliser la fonction :func:`parse_opf`, en lui fournissant 
-le contenu du fichier, sous forme d'une chaîne de caractère. Cette fonction 
+Le plus simple est d'utiliser la fonction :func:`parse_opf`, en lui fournissant
+le contenu du fichier, sous forme d'une chaîne de caractère. Cette fonction
 retourne alors un objet :class:`Opf` qu'il suffit d'utiliser.
 
-Cet objet permet d'accéder aux différents éléments via ses attributs : 
-:attr:`metadata <Opf.metadata>`, :attr:`manifest <Opf.manifest>`, 
+Cet objet permet d'accéder aux différents éléments via ses attributs :
+:attr:`metadata <Opf.metadata>`, :attr:`manifest <Opf.manifest>`,
 :attr:`spine <Opf.spine>`, et :attr:`guide <Opf.guide>`.
 
 Obtenir la liste des fichiers
-.............................
+-----------------------------
 
-C'est l'élément ``<manifest>`` qui propose ces informations, il est représenté 
-par un objet de la classe :class:`Manifest`, classe qui étend le comportement 
+C'est l'élément ``<manifest>`` qui propose ces informations, il est représenté
+par un objet de la classe :class:`Manifest`, classe qui étend le comportement
 du type ``dict`` :
 
 .. code-block:: python
@@ -145,28 +146,28 @@ du type ``dict`` :
        item = manifest[id]
        print 'Fichier Id : "%s" [href="%s"]' % (item.id, item.href)
 
-À partir d'un objet de la classe :class:`ManifestItem`, un objet de la classe 
-:class:`epub.EpubFile` peut retrouver le contenu associé, grâce à sa méthode 
+À partir d'un objet de la classe :class:`ManifestItem`, un objet de la classe
+:class:`epub.EpubFile` peut retrouver le contenu associé, grâce à sa méthode
 :meth:`epub.EpubFile.read`.
 
 Les meta-données
-................
+----------------
 
-La classe :class:`Metadata` permet de représenter et donc de manipuler les 
-meta-données d'un fichier epub : chacun de ses attributs représente un type de 
+La classe :class:`Metadata` permet de représenter et donc de manipuler les
+meta-données d'un fichier epub : chacun de ses attributs représente un type de
 meta-données.
 
-Les règles suivantes s'appliquent à tous les attributs composés de plusieurs 
+Les règles suivantes s'appliquent à tous les attributs composés de plusieurs
 éléments :
 
-* La valeur d'une meta-donnée est représentée par un tuple de ses attributs, 
+* La valeur d'une meta-donnée est représentée par un tuple de ses attributs,
   chacun représenté par une chaîne de caractère
-* Une meta-donnée peut être présente plusieurs fois avec des valeurs 
+* Une meta-donnée peut être présente plusieurs fois avec des valeurs
   différentes : chacune est alors stockée dans une liste
-* Un attribut qui n'est pas renseigné dans le fichier xml est représenté par 
+* Un attribut qui n'est pas renseigné dans le fichier xml est représenté par
   une chaîne vide.
 
-Ainsi, l'attribut :attr:`titles` est une ``list`` de ``tuple`` de la forme 
+Ainsi, l'attribut :attr:`titles` est une ``list`` de ``tuple`` de la forme
 ``(title, lang)``.
 
 Les autres attributs simples sont représentées par une chaîne de caractères.
@@ -185,9 +186,9 @@ Les autres attributs simples sont représentées par une chaîne de caractères.
    metadata.title = [('Titre français', 'fr'), ('English title', 'en')]
 
 Utiliser l'élélement ``<spine>``
-................................
+--------------------------------
 
-L'élément ``<spine>`` ne fournit pas directement une liste de fichiers, mais y 
+L'élément ``<spine>`` ne fournit pas directement une liste de fichiers, mais y
 fait seulement référence par l'identifiant de ces fichiers.
 
 .. code-block:: python
@@ -199,10 +200,10 @@ fait seulement référence par l'identifiant de ces fichiers.
        print 'Fichier Id : "%s" [href="%s"]' % (item.id, item.href)
 
 API du module
--------------
+=============
 
 La fonction ``parse_opf``
-.........................
+-------------------------
 
 .. py:function:: parse_opf(xml_string)
 
@@ -213,7 +214,7 @@ La fonction ``parse_opf``
    :rtype: Opf
 
 La classe ``Opf``
-.................
+-----------------
 
 .. py:class:: Opf(uid_id=None, version='2.0', xmlns=XMLNS_OPF, metadata=None, manifest=None, spine=None, guide=None)
 
@@ -264,7 +265,7 @@ La classe ``Opf``
       d'illustration, etc.).
 
 La classe Metadata
-..................
+------------------
 
 .. py:class:: Metadata()
 
@@ -403,7 +404,7 @@ La classe Metadata
       liste :attr:`identifiers`.
 
 Les classes Manifest et ManifestItem
-....................................
+------------------------------------
 
 .. py:class:: Manifest()
 
@@ -532,7 +533,7 @@ Les classes Manifest et ManifestItem
       :rtype: :class:`xml.dom.Element`
 
 Les classes Guide et Spine
-..........................
+--------------------------
 
 .. py:class:: Guide
 
