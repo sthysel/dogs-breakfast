@@ -1,3 +1,4 @@
+============================
 Le fichier de navigation NCX
 ============================
 
@@ -7,10 +8,10 @@ Le fichier de navigation NCX
    :maxdepth: 2
 
 Navigation Center eXtended
---------------------------
+==========================
 
-Le format NCX est un format XML qui permet de décrire la structure de 
-navigation d'un livre numérique. La spécification de ce format est dirigé et 
+Le format NCX est un format XML qui permet de décrire la structure de
+navigation d'un livre numérique. La spécification de ce format est dirigé et
 maintenu par le `DAISY Consortium`__.
 
 .. __: http://www.niso.org/workrooms/daisy/Z39-86-2005.html#NCX
@@ -21,15 +22,15 @@ maintenu par le `DAISY Consortium`__.
    reader to jump directly to any of the major structural elements of the 
    document
 
-Il est employé dans le cadre du format epub avec quelques modifications 
+Il est employé dans le cadre du format epub avec quelques modifications
 apportées par la `spécification epub OPF`__.
 
 .. __: http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.4.1
 
-Tout comme le format OPF, la bibliothèque python-epub propose un module à part 
+Tout comme le format OPF, la bibliothèque python-epub propose un module à part
 entière pour manipuler ce format plus simplement.
 
-La classe :class:`Ncx` permet au développeur d'utiliser ce contenu au travers 
+La classe :class:`Ncx` permet au développeur d'utiliser ce contenu au travers
 de ses différents attributs :
 
 * :attr:`Ncx.nav_map` pour l'élément ``<navMap>``
@@ -37,9 +38,9 @@ de ses différents attributs :
 * :attr:`Ncx.nav_lists` pour les éléments ``<navList>``
 
 Comprendre la structure
-.......................
+-----------------------
 
-La clé pour comprendre comment utiliser le format NCX est sans doute de 
+La clé pour comprendre comment utiliser le format NCX est sans doute de
 comprendre le principe d'une table de matière ; prenez l'exemple suivant :
 
 * Volume 1
@@ -52,8 +53,8 @@ comprendre le principe d'une table de matière ; prenez l'exemple suivant :
       * Chapitre 2
       * Chapitre 3
 
-Cette structure est finalement très simple : un arbre aux ramification 
-descendantes. Cette liste est une ``<navMap>``, dont chaque élément est un 
+Cette structure est finalement très simple : un arbre aux ramification
+descendantes. Cette liste est une ``<navMap>``, dont chaque élément est un
 ``<navPoint>``.
 
 Voici la même chose au format xml :
@@ -105,17 +106,17 @@ Vous aurez sans doute remarqué plusieurs choses :
 * Cet attribut est cependant **optionnel**
 * Un ``<navPoint>`` représente une entrée de la navigation
 * Un ``<navPoint>`` peut avoir lui-même plusieurs ``<navPoint>`` en fils
-* Le contenu pointé par un ``<navPoint>``, via sa balise ``<content>`` n'est 
+* Le contenu pointé par un ``<navPoint>``, via sa balise ``<content>`` n'est
   pas un chemin d'accès mais une url relative à l'emplacement du fichier NCX
 
-Armée de cette nouvelle compréhension, utiliser un objet :class:`Ncx` ne 
+Armée de cette nouvelle compréhension, utiliser un objet :class:`Ncx` ne
 devrait plus être un gros problème.
 
 API du module
--------------
+=============
 
 La fonction ``parse_ncx``
-.........................
+-------------------------
 
 .. py:function:: parse_ncx(xml_string)
 
@@ -126,7 +127,7 @@ La fonction ``parse_ncx``
    :rtype: Ncx
 
 La classe ``Ncx``
-.................
+-----------------
 
 .. py:class:: Ncx
 
@@ -207,7 +208,7 @@ La classe ``Ncx``
       :rtype: :class:`xml.dom.Element`
 
 Les classes ``NavMap`` et ``NavPoint``
-......................................
+--------------------------------------
 
 .. py:class:: NavMap
 
@@ -313,7 +314,7 @@ Les classes ``NavMap`` et ``NavPoint``
       :rtype: :class:`xml.dom.Element`
 
 Les classes ``PageList`` et ``PageTarget``
-..........................................
+------------------------------------------
 
 .. py:class:: PageList
 
@@ -419,7 +420,7 @@ Les classes ``PageList`` et ``PageTarget``
       :rtype: :class:`xml.dom.Element`
 
 Les classes ``NavList`` et ``NavTarget``
-..........................................
+----------------------------------------
 
 .. py:class:: NavList
 

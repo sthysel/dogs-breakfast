@@ -2,7 +2,7 @@
 Python Epub
 ===========
 
-This directory contains the 0.5.2 version of epub python library.
+This directory contains the 0.5.3 version of epub python library.
 
 Python Epub is free software. See the file LICENSE.txt for copying conditions.
 

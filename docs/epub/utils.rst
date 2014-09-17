@@ -1,3 +1,4 @@
+===========
 Utilitaires
 ===========
 
@@ -7,7 +8,7 @@ Utilitaires
    :maxdepth: 2
 
 Pour des raisons pratiques, le module :mod:`epub` propose un module utilitaire
-appelé :mod:`epub.utils`. Il regroupe les fonctions pratiques à utilisées.
+appelé :mod:`epub.utils`. Il regroupe les fonctions pratiques à utiliser.
 
 
 .. py:function:: get_node_text(node)

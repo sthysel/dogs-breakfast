@@ -1,3 +1,4 @@
+===============
 Le fichier Epub
 ===============
 
@@ -7,48 +8,48 @@ Le fichier Epub
    :maxdepth: 2
 
 Introduction
-------------
+============
 
-Pour manipuler un fichier epub, il est nécessaire d'en comprendre la structure. 
-Cela n'a rien de bien compliqué en réalité : il s'agit simplement d'une archive 
-zip, avec une structure de contenu un peu particulière, et quelques règles 
+Pour manipuler un fichier epub, il est nécessaire d'en comprendre la structure.
+Cela n'a rien de bien compliqué en réalité : il s'agit simplement d'une archive
+zip, avec une structure de contenu un peu particulière, et quelques règles
 supplémentaires sur le contenu (format, style, etc.).
 
-Lorsque vous souhaitez lire un fichier epub, vous devez commencer par l'ouvrir 
-comme un fichier zip, puis rechercher les fichiers importants qui vous 
-permettront de naviguer au travers (le fichier `OPF` d'une part, et le fichier 
+Lorsque vous souhaitez lire un fichier epub, vous devez commencer par l'ouvrir
+comme un fichier zip, puis rechercher les fichiers importants qui vous
+permettront de naviguer au travers (le fichier `OPF` d'une part, et le fichier
 de navigation `NCX` d'autre part).
 
-Le module :mod:`epub` vous permet de vous abstraire d'une grosse partie du 
-travail d'analyse de cette structure, en fournissant des objets contenant ces 
+Le module :mod:`epub` vous permet de vous abstraire d'une grosse partie du
+travail d'analyse de cette structure, en fournissant des objets contenant ces
 informations.
 
-Cependant, pour plus de facilité, il est vivement recommandé de connaître un 
+Cependant, pour plus de facilité, il est vivement recommandé de connaître un
 minimum la `spécification Epub 2`__, disponible en ligne sur le site de l'IDPF.
 
 .. __: http://idpf.org/epub/201
 
 
 Ouvrir un fichier Epub
-----------------------
+======================
 
-La fonction principale du module est :func:`epub.open_epub`, qui permet d'ouvrir 
-un fichier epub et d'obtenir un objet de la classe :class:`EpubFile`, 
-permettant de manipuler les données du fichier : son contenu et ses 
+La fonction principale du module est :func:`epub.open_epub`, qui permet d'ouvrir
+un fichier epub et d'obtenir un objet de la classe :class:`EpubFile`,
+permettant de manipuler les données du fichier : son contenu et ses
 meta-données.
 
-Elle s'utilise très simplement en lui fournissant le chemin d'accès (relatif 
-ou absolu) du fichier epub à ouvrir, et retourne un objet de la classe 
+Elle s'utilise très simplement en lui fournissant le chemin d'accès (relatif
+ou absolu) du fichier epub à ouvrir, et retourne un objet de la classe
 :class:`epub.EpubFile` représentant l'archive epub ainsi ouverte.
 
-On parle ici "d'archive epub", car un fichier epub n'est ni plus ni moins qu'un 
-fichier zip avec une structure un peu particulière. Tous les détails de cette 
-utilisation du format zip se trouvent dans la `spécification epub`__ (et plus 
+On parle ici "d'archive epub", car un fichier epub n'est ni plus ni moins qu'un
+fichier zip avec une structure un peu particulière. Tous les détails de cette
+utilisation du format zip se trouvent dans la `spécification epub`__ (et plus
 spécifiquement dans la spécification OCF).
 
 .. __: http://idpf.org/epub/201
 
-De plus, l'objet :class:`EpubFile` implémentant les bonnes méthodes, vous 
+De plus, l'objet :class:`EpubFile` implémentant les bonnes méthodes, vous
 pouvez utiliser la fonction :func:`open_epub` avec l'instruction ``with`` :
 
 .. code-block:: python
@@ -58,14 +59,14 @@ pouvez utiliser la fonction :func:`open_epub` avec l'instruction ``with`` :
 
 
 Lire le contenu du fichier
---------------------------
+==========================
 
-Suivant la norme Epub 2, le contenu du fichier epub est décrit par le fichier 
-opf, indiqué par le fichier ``META-INF/container.xml``. Si :func:`open_epub` se 
+Suivant la norme Epub 2, le contenu du fichier epub est décrit par le fichier
+opf, indiqué par le fichier ``META-INF/container.xml``. Si :func:`open_epub` se
 charge de le trouver pour vous, il vous reste à exploiter la liste des fichiers.
 
 Pour se faire, vous pouvez, au choix, utiliser les informations du fichier opf
-(via l'attribut :attr:`EpubFile.opf`), ou les informations du fichier ncx (via 
+(via l'attribut :attr:`EpubFile.opf`), ou les informations du fichier ncx (via
 l'attribut :attr:`EpubFile.toc`).
 
 Par exemple pour accéder à l'ensemble des items du fichier :
@@ -78,7 +79,7 @@ Par exemple pour accéder à l'ensemble des items du fichier :
        # read the content
        data = book.read_item(item)
 
-Il est possible d'accéder à l'ordre linéaire des éléments en utilisant 
+Il est possible d'accéder à l'ordre linéaire des éléments en utilisant
 l'objet de la classe :attr:`opf.Spine` disponible de cette façon :
 
 .. code-block:: python
@@ -95,15 +96,15 @@ l'objet de la classe :attr:`opf.Spine` disponible de cette façon :
        # read the content
        data = book.read_item(item)
 
-Quant au fichier de navigation NCX, il est accessible via l'attribut 
-:attr:`EpubFile.toc`. Cet attribut est de la classe :class:`ncx.Ncx` et 
-représente le fichier de navigation du livre numérique, et propose une 
-structure logique de lecture des fichiers (mais cela demande une connaissance 
+Quant au fichier de navigation NCX, il est accessible via l'attribut
+:attr:`EpubFile.toc`. Cet attribut est de la classe :class:`ncx.Ncx` et
+représente le fichier de navigation du livre numérique, et propose une
+structure logique de lecture des fichiers (mais cela demande une connaissance
 plus approfondie de la structure d'un fichier epub).
 
 
 Écrire dans un fichier epub
----------------------------
+===========================
 
 Nouveauté de la version 0.4.0, vous pouvez aussi ouvrir un fichier epub en mode
 écriture. Le mode `w` permet d'ouvrir un fichier epub vierge, et le mode `a`
@@ -129,10 +130,10 @@ Le contenu du fichier epub est réellement sauvegardé lorsqu'il est fermé, c'e
 
 
 API du module
--------------
+=============
 
 La fonction open_epub
-.....................
+---------------------
 
 .. py:function:: open_epub(filename, mode='r')
    
@@ -159,7 +160,7 @@ La fonction open_epub
    :param string filename: chemin d'accès au fichier epub
 
 La classe EpubFile
-..................
+------------------
 
 .. py:class:: EpubFile(filename)
 
@@ -322,7 +323,7 @@ La classe EpubFile
       :rtype: string
 
 La classe Book
-..............
+--------------
 
 .. py:class:: Book
 
