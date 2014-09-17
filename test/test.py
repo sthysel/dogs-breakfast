@@ -6,7 +6,6 @@ import os
 import unittest
 import epub
 
-
 from shutil import copy, rmtree
 
 
@@ -17,7 +16,7 @@ class TestFunction(unittest.TestCase):
     epub_path = '_data/test.epub'
 
     def test_version(self):
-        self.assertEqual(epub.__version__, '0.5.2')
+        self.assertEqual(epub.__version__, '0.5.3')
 
     def test_open(self):
         test_path = os.path.join(os.path.dirname(__file__), self.epub_path)
